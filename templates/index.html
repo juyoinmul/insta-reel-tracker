@@ -16,6 +16,15 @@
     </select>
     <button type="submit">검색</button>
   </form>
+<form method="get" style="margin: 10px 0;">
+  <input type="hidden" name="query" value="{{ query }}">
+  <label style="font-weight:bold;">정렬 기준:</label>
+  <select name="sort" onchange="this.form.submit()">
+    <option value="likes" {% if sort_by == 'likes' %}selected{% endif %}>좋아요순</option>
+    <option value="views" {% if sort_by == 'views' %}selected{% endif %}>조회수순</option>
+    <option value="date" {% if sort_by == 'date' %}selected{% endif %}>최신순</option>
+  </select>
+</form>
 
   <h2>#{{ keyword }} 릴스 인기 콘텐츠</h2>
 
