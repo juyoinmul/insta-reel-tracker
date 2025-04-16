@@ -18,15 +18,15 @@ def index():
     filtered = [item for item in reels_data if query in item['keyword']]
 
     if sort_by == 'likes':
-        sorted_data = sorted(filtered, key=lambda x: x['likes'], reverse=True)
-    elif sort_by == 'views':
-        sorted_data = sorted(filtered, key=lambda x: x['views'], reverse=True)
-    elif sort_by == 'date':
-        elif sort_by == 'comments':
+    sorted_data = sorted(filtered, key=lambda x: x['likes'], reverse=True)
+elif sort_by == 'views':
+    sorted_data = sorted(filtered, key=lambda x: x['views'], reverse=True)
+elif sort_by == 'comments':
     sorted_data = sorted(filtered, key=lambda x: x['comments'], reverse=True)
+elif sort_by == 'date':
+    sorted_data = sorted(filtered, key=lambda x: parse_date(x['date']), reverse=True)
+else:
+    sorted_data = filtered
 
-        sorted_data = sorted(filtered, key=lambda x: parse_date(x['date']), reverse=True)
-    else:
-        sorted_data = filtered
 
     return render_template('index.html', query=query, reels=sorted_data, sort_by=sort_by)
