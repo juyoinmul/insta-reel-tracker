@@ -22,6 +22,9 @@ def index():
     elif sort_by == 'views':
         sorted_data = sorted(filtered, key=lambda x: x['views'], reverse=True)
     elif sort_by == 'date':
+        elif sort_by == 'comments':
+    sorted_data = sorted(filtered, key=lambda x: x['comments'], reverse=True)
+
         sorted_data = sorted(filtered, key=lambda x: parse_date(x['date']), reverse=True)
     else:
         sorted_data = filtered
